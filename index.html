@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Daily Pixel Art</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #ff007f;
+            text-shadow: 2px 2px #000;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 30px;
+        }
+        .art-card {
+            background: #1e1e1e;
+            border: 2px solid #333;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 4px 4px 0px #333;
+            transition: transform 0.1s ease;
+        }
+        .art-card:hover {
+            transform: translateY(-2px);
+            border-color: #ff007f;
+        }
+        .art-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            /* Keeps pixel art edges sharp and crisp when scaled */
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+        }
+        .day-label {
+            font-size: 0.9rem;
+            color: #ff007f;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .date-label {
+            font-size: 0.8rem;
+            color: #888;
+            margin: 4px 0;
+        }
+        .title-label {
+            font-size: 1rem;
+            margin-top: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DAILY PIXEL ART</h1>
+    <p>A new piece of pixel art, every single day.</p>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        // --- ADD YOUR DAILY PIXEL ART HERE ---
+        // Simply add a new line to the top of this list every day!
+        const artList = [
+            { day: 2, date: "2026-06-05", title: "Fish Warrior", file: "images/fish_warrior.png" },
+            { day: 1, date: "2026-06-04", title: "Crab Monster", file: "images/crab_monster.png" }
+        ];
+
+        const gallery = document.getElementById('gallery');
+        artList.forEach(art => {
+            const card = document.createElement('div');
+            card.className = 'art-card';
+            card.innerHTML = `
+                <img src="${art.file}" alt="${art.title}" class="art-image">
+                <div class="day-label">DAY ${art.day}</div>
+                <div class="date-label">${art.date}</div>
+                <div class="title-label">${art.title}</div>
+            `;
+            gallery.appendChild(card);
+        });
+    </script>
+</body>
+</html>
